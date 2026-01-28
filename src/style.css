@@ -1,0 +1,125 @@
+:root {
+  --dark: #262e4c;
+  --main: #45538a;
+  --accent: #724972;
+  --light: #b199db;
+  --bg: #e9ccd3;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: var(--bg);
+  color: var(--dark);
+  padding: 20px;
+
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--light);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px var(--dark);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+button {
+  background: var(--main);
+  color: var(--light);
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: var(--accent);
+}
+
+.stats {
+  margin-bottom: 20px;
+}
+
+#puzzleBoard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0; /* Пазли торкаються один одного */
+  row-gap: 10px;
+  padding: 50px;
+  background: var(--bg);
+  border-radius: 15px;
+}
+
+.puzzle-piece {
+  position: relative;
+  height: 100px;
+  padding: 0 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--main);
+  /* border: 1px solid var(--text); */
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+/* Кожен другий блок має легке тонування для глибини */
+.puzzle-piece:nth-child(even) {
+  background: var(--accent);
+}
+
+/* Ефект зчеплення через "вушко" */
+.puzzle-piece::after {
+  content: '';
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: inherit;
+  /* border-right: 1px solid inherit; */
+  border-left: none;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+/* Виріз на наступному пазлі */
+.puzzle-piece::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: var(--bg);
+  /* Колір фону */
+  border-right: 1px solid inherit;
+  border-radius: 50%;
+  z-index: 5;
+}
+
+.puzzle-piece:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+.puzzle-piece:first-child::before {
+  display: none;
+}
+
+.puzzle-piece:last-child {
+  border-radius: 0 10px 10px 0;
+  border-right: 1px solid #dee2e6;
+}
+
+.puzzle-piece:last-child::after {
+  display: none;
+}

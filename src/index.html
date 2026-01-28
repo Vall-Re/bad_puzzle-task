@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital puzzle</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="../public/data.json.js"></script>
+  </head>
+  <body>
+    <div class="container">
+        <header>
+            <h1>Цифровий пазл</h1>
+            <p>Знайдено фрагментів у файлі: <strong id="totalCount">0</strong></p>
+            <button id="solveBtn" onclick="solvePuzzle()">Скласти ланцюжок</button>
+        </header>
+
+        <div id="output" class="hidden">
+            <div class="stats">
+                Довжина ланцюжка: <span id="finalCount">0</span> фрагментів.
+            </div>
+            
+            <div id="puzzleBoard"></div>
+
+            <h3>Повне число:</h3>
+            <div id="fullString" class="full-string-box"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
