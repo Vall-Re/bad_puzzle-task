@@ -1,9 +1,9 @@
 :root {
-  --dark: #262e4c;
-  --main: #45538a;
-  --accent: #724972;
-  --light: #b199db;
-  --bg: #e9ccd3;
+  --dark: #313c45;
+  --main: #4f6271;
+  --accent: #778ca4;
+  --light: #b3bfcd;
+  --bg: #d5dbe2;
 }
 
 body {
@@ -47,11 +47,20 @@ button:hover {
   margin-bottom: 20px;
 }
 
+.full-string-box {
+  word-break: break-all;
+  overflow-wrap: break-word;
+  white-space: normal;
+  line-height: 1.6;
+  max-width: 100%;
+}
+
+
 #puzzleBoard {
   display: flex;
   flex-wrap: wrap;
-  gap: 0; /* Пазли торкаються один одного */
-  row-gap: 10px;
+  gap: 0;
+  row-gap: 20px;
   padding: 50px;
   background: var(--bg);
   border-radius: 15px;
@@ -60,38 +69,36 @@ button:hover {
 .puzzle-piece {
   position: relative;
   height: 100px;
-  padding: 0 25px;
+  padding: 0 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--main);
-  /* border: 1px solid var(--text); */
+  background: var(--light);
   font-size: 24px;
   transition: all 0.3s ease;
 }
 
-/* Кожен другий блок має легке тонування для глибини */
+
 .puzzle-piece:nth-child(even) {
   background: var(--accent);
 }
 
-/* Ефект зчеплення через "вушко" */
+
 .puzzle-piece::after {
   content: '';
   position: absolute;
   right: -12px;
   top: 50%;
   transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
   background: inherit;
-  /* border-right: 1px solid inherit; */
   border-left: none;
   border-radius: 50%;
   z-index: 10;
 }
 
-/* Виріз на наступному пазлі */
+
 .puzzle-piece::before {
   content: '';
   position: absolute;
@@ -101,7 +108,6 @@ button:hover {
   width: 24px;
   height: 24px;
   background: var(--bg);
-  /* Колір фону */
   border-right: 1px solid inherit;
   border-radius: 50%;
   z-index: 5;
@@ -117,7 +123,7 @@ button:hover {
 
 .puzzle-piece:last-child {
   border-radius: 0 10px 10px 0;
-  border-right: 1px solid #dee2e6;
+  border-right: 1px solid inherit;
 }
 
 .puzzle-piece:last-child::after {
